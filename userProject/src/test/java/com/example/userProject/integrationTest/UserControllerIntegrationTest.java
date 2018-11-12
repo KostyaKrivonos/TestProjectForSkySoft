@@ -12,8 +12,10 @@ import org.springframework.test.context.web.WebAppConfiguration;
 import org.springframework.test.web.servlet.MockMvc;
 import org.springframework.test.web.servlet.setup.MockMvcBuilders;
 
+
 import com.example.userProject.controller.Controller;
 import com.example.userProject.model.User;
+import com.example.userProject.model.dto.UserDto;
 import com.example.userProject.repository.UserRepository;
 import com.example.userProject.service.UserService;
 import static org.mockito.Mockito.*;
@@ -53,11 +55,11 @@ public class UserControllerIntegrationTest {
 
 	@Test
 	public void testFindAll() throws Exception {
-		User user = new User();
+		UserDto user = new UserDto();
 		user.setUserName("AlexPupkin");
 		user.setFirstName("Alex");
 		user.setLastName("Pupkin");
-		User user1 = new User();
+		UserDto user1 = new UserDto();
 		user1.setUserName("VasyaVasya");
 		user1.setFirstName("Vasya");
 		user1.setLastName("Vasya");

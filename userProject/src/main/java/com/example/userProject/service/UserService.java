@@ -1,5 +1,6 @@
 package com.example.userProject.service;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -7,6 +8,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
 import com.example.userProject.model.User;
+import com.example.userProject.model.dto.UserDto;
 import com.example.userProject.repository.UserRepository;
 
 @Component
@@ -42,7 +44,17 @@ public class UserService {
 	 * public Page<User> getAll(Integer page) { return
 	 * userRepository.findAll(PageRequest.of(page, 2)); }
 	 */
-	public List<User> getAll() {
-		return userRepository.findAll();
+	public List<UserDto> getAll() {
+		List<User> users = userRepository.findAll();
+		List<UserDto> userDtos = new ArrayList<UserDto>();
+		for(User user : users) {
+			UserDto userDto = new UserDto();
+			userDto.setId(user.getId());
+			userDto.setUserName(user.getUserName());
+			userDto.setFirstName(user.getFirstName());
+			userDto.setLastName(user.getLastName());
+			userDtos.add(userDto);
+		}
+		return userDtos;
 	}
 }

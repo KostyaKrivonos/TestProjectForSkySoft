@@ -7,12 +7,14 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.http.ResponseEntity;
+
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.example.userProject.model.User;
+import com.example.userProject.model.dto.UserDto;
 import com.example.userProject.service.UserService;
 
 @RestController
@@ -28,7 +30,7 @@ public class Controller {
 	}
 
 	@RequestMapping(value = "/getAll", method = RequestMethod.GET, produces = APPLICATION_JSON_VALUE)
-	public List<User> getAll() {
+	public List<UserDto> getAll() {
 		return userService.getAll();
 	}
 }
