@@ -5,6 +5,18 @@ public class UserDto {
 	private String userName;
 	private String firstName;
 	private String lastName;
+	
+	public UserDto() {
+		super();
+	}
+
+	public UserDto(Integer id, String userName, String firstName, String lastName) {
+		super();
+		this.id = id;
+		this.userName = userName;
+		this.firstName = firstName;
+		this.lastName = lastName;
+	}
 
 	public Integer getId() {
 		return id;

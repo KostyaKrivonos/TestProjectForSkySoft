@@ -1,7 +1,7 @@
 package com.example.userProject.service;
 
-import java.util.ArrayList;
 import java.util.List;
+import java.util.stream.Collectors;
 
 import org.springframework.beans.factory.annotation.Autowired;
 
@@ -46,15 +46,9 @@ public class UserService {
 	 */
 	public List<UserDto> getAll() {
 		List<User> users = userRepository.findAll();
-		List<UserDto> userDtos = new ArrayList<UserDto>();
-		for(User user : users) {
-			UserDto userDto = new UserDto();
-			userDto.setId(user.getId());
-			userDto.setUserName(user.getUserName());
-			userDto.setFirstName(user.getFirstName());
-			userDto.setLastName(user.getLastName());
-			userDtos.add(userDto);
-		}
+		List<UserDto> userDtos = users.stream()
+				.map((user)->new UserDto(user.getId(), user.getUserName(), user.getFirstName(), user.getLastName()))
+				.collect(Collectors.toList());
 		return userDtos;
 	}
 }
